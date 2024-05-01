@@ -31,7 +31,6 @@ def main():
         usage()
 
     interface, port = argv[1], argv[2]
-    print(port)
     ipaddr = get_ip(interface)
     shells = path.join(path.dirname(path.realpath(__file__)), 'shells.txt')
     if len(argv) == 4:
