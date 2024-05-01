@@ -31,6 +31,7 @@ def main():
         usage()
 
     interface, port = argv[1], argv[2]
+    print(port)
     ipaddr = get_ip(interface)
     shells = path.join(path.dirname(path.realpath(__file__)), 'shells.txt')
     if len(argv) == 4:
@@ -48,9 +49,9 @@ def main():
     c = input('Select your payload, press "l" to listen on that port or enter to exit: ')
     if c == 'l':
         if int(port) < 1024:
-            system('sudo nc -n -v -l {} {}'.format(ipaddr, port))
+            system('sudo nc -s {} -lvnp {}'.format(ipaddr, port))
         else:
-            system('nc -n -v -l {} {}'.format(ipaddr, port))
+            system('nc -s {} -lvnp {}'.format(ipaddr, port))
 
 if __name__ == "__main__":
     main()
